@@ -7,17 +7,13 @@ terraform {
   }
 }
 
-provider "google" {
-  project = var.project_id
-  region  = var.region
-  credentials = file("~/terraform-key.json")  # Add this line
-}
+
 
 resource "google_secret_manager_secret" "discord_token" {
   secret_id = "discord-token"
   
   replication {
-    automatic = true
+    auto = true
   }
 }
 
